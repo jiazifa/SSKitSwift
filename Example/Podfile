@@ -6,6 +6,5 @@ target 'SSKitSwift_Example' do
   target 'SSKitSwift_Tests' do
     inherit! :search_paths
 
-    
   end
 end
