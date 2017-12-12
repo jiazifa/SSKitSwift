@@ -11,7 +11,7 @@ import UIKit
 
 public extension String {
     
-    public var length : Int { return self.characters.count }
+    public var length : Int { return self.count }
     
     
     /// 去除空格和换行之后的字符串
@@ -171,18 +171,6 @@ public extension String {
         var float: Float = 0
         scanner.scanFloat(&float)
         return float
-    }
-    
-    func md5String() -> String{
-        let cStr = self.cString(using: String.Encoding.utf8);
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16)
-        CC_MD5(cStr!,(CC_LONG)(strlen(cStr!)), buffer)
-        let md5String = NSMutableString();
-        for i in 0 ..< 16{
-            md5String.appendFormat("%02x", buffer[i])
-        }
-        free(buffer)
-        return md5String as String
     }
 }
 
