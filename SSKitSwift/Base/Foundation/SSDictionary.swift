@@ -14,7 +14,7 @@ public extension NSDictionary {
     ///
     /// - Parameter key: 键值
     /// - Returns: 是否包含了该键值
-    public func containsObject(_ key:String) -> Bool {
+    public func ss_containsObject(_ key:String) -> Bool {
         if key.isEmpty {return false}
         return self[key] != nil
     }
@@ -23,7 +23,7 @@ public extension NSDictionary {
     /// 将所有的键-正序后产出
     ///
     /// - Returns: 正序的集合
-    func allKeysSorted() -> [String] {
+    func ss_allKeysSorted() -> [String] {
         let keys:[String] = self.allKeys as! [String];
         return keys.sorted(by: { (k1:String, k2:String) -> Bool in
             return k1 > k2
@@ -34,7 +34,7 @@ public extension NSDictionary {
     ///
     /// - Parameter forKeys: 键的集合
     /// - Returns: 组成的字典
-    public func entries(forKeys:[String]) -> NSDictionary {
+    public func ss_entries(forKeys:[String]) -> NSDictionary {
         let dic : NSMutableDictionary = NSMutableDictionary.init(capacity: 0)
         for key in forKeys {
             if self.object(forKey: key) != nil {dic[key] = self.object(forKey: key)}
@@ -46,7 +46,7 @@ public extension NSDictionary {
     ///
     /// - Returns: 返回的json字符串的对象
     @discardableResult
-    public func jsonStringEncode() -> String? {
+    public func ss_jsonStringEncode() -> String? {
         if JSONSerialization.isValidJSONObject(self) == false {return nil}
         let jsonData : NSData
         do {

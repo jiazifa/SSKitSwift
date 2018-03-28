@@ -20,6 +20,10 @@ it, simply add the following line to your Podfile:
 pod "SSKitSwift"
 ```
 
+### Versions
+##### 0.1.4
+update layout code
+
 ## Author
 
 jiazifa, sunshukang30@163.com

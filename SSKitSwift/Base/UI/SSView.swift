@@ -10,38 +10,47 @@ import Foundation
 import UIKit
 
 public extension UIView {
-    public var left : CGFloat {
+    public var ss_x : CGFloat {
         get {
             return frame.origin.x
         }
-        set(newLeft) {
+        set(newX) {
             var tempFrame : CGRect = frame
-            tempFrame.origin.x = newLeft
+            tempFrame.origin.x = newX
             frame = tempFrame
         }
     }
-    public var top : CGFloat {
+    public var ss_left: CGFloat {
+        get { return ss_x }
+        set(newLeft) { ss_x = newLeft }
+    }
+    
+    public var ss_y : CGFloat {
         get {
             return frame.origin.y
         }
-        set(newTop) {
+        set(newY) {
             var tempFrame : CGRect = frame
-            tempFrame.origin.y = newTop
+            tempFrame.origin.y = newY
             frame = tempFrame
         }
     }
-    public var right : CGFloat {
+    
+    public var ss_top: CGFloat {
+        get { return ss_y }
+        set(newTop) { ss_y = newTop }
+    }
+    public var ss_right : CGFloat {
         get {
             return frame.origin.x + frame.size.width
         }
-        
         set(newRight) {
             var tempFrame : CGRect = frame
             tempFrame.origin.x = newRight - frame.size.width;
             frame = tempFrame
         }
     }
-    public var bottom : CGFloat {
+    public var ss_bottom : CGFloat {
         get {
             return frame.origin.y + frame.size.height
         }
@@ -53,7 +62,7 @@ public extension UIView {
         }
     }
     
-    public var width : CGFloat {
+    public var ss_width : CGFloat {
         get {
             return frame.size.width
         }
@@ -63,8 +72,10 @@ public extension UIView {
             frame = tempFrame
         }
     }
-    
-    public var height : CGFloat {
+    public func ss_WidthEqualTo(_ view: UIView) {
+        self.ss_width = view.ss_width
+    }
+    public var ss_height : CGFloat {
         get {
             return frame.size.height
         }
@@ -74,7 +85,10 @@ public extension UIView {
             frame = tempFrame
         }
     }
-    public var centerX : CGFloat {
+    public func ss_HeightEqualTo(_ view: UIView) {
+        self.ss_height = view.ss_height
+    }
+    public var ss_centerX : CGFloat {
         get {
             return self.center.x
         }
@@ -82,8 +96,11 @@ public extension UIView {
             self.center = CGPoint.init(x: newCenterX, y: self.center.y)
         }
     }
+    public func ss_CenterXEqualTo(_ view: UIView) {
+        self.ss_centerX = view.ss_centerX
+    }
     
-    public var centerY : CGFloat {
+    public var ss_centerY : CGFloat {
         get {
             return self.center.y
         }
@@ -91,8 +108,14 @@ public extension UIView {
             self.center = CGPoint.init(x: self.center.x, y: newCenterY)
         }
     }
+    public func ss_CenterYEqualTo(_ view: UIView) {
+        self.ss_centerY = view.ss_centerY
+    }
+    public func ss_CenterEqualTo(_ view: UIView) {
+        self.center = view.center
+    }
     
-    public var size : CGSize {
+    public var ss_size : CGSize {
         get {
             return self.frame.size
         }
@@ -102,8 +125,10 @@ public extension UIView {
             frame = tempFrame
         }
     }
-    
-    public var origin : CGPoint {
+    public func ss_SizeEqualTo(_ view: UIView) {
+        self.ss_size =  view.ss_size
+    }
+    public var ss_origin : CGPoint {
         get {
             return frame.origin
         }
@@ -113,19 +138,33 @@ public extension UIView {
             frame = tempFrame
         }
     }
-    //MARK:Method
-    public func viewController() -> UIViewController? {
-        var view : UIView = self
-        var nextResponder : UIResponder = view.superview!
-        while (view.superview != nil) {
-            view = view.superview!
-            nextResponder = view.next!
-            if (nextResponder.isKind(of: UIViewController.self)) {
-                return nextResponder as? UIViewController
-            }
+    public func ss_FillWidth() {
+        if let sv = superview {
+            self.ss_width = sv.ss_width
+            self.ss_x = 0.0
         }
-        return nil
     }
+    public func ss_FillHeight() {
+        if let sv = superview {
+            self.ss_height = sv.ss_height
+            self.ss_y = 0.0
+        }
+    }
+    public func ss_Fill() {
+        if let sv = superview {
+            self.frame = CGRect.init(origin: CGPoint.zero, size: sv.ss_size)
+        }
+    }
+    
+    public var topSuperView: UIView? {
+        var top: UIView? = self
+        while (top?.superview != nil) {
+            top = top?.superview
+        }
+        return top
+        
+    }
+    // Layout
     
     public func removeAllObjects() {
         while self.subviews.count > 0 {
