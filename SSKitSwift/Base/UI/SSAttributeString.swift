@@ -13,7 +13,7 @@ import CoreText
 extension NSAttributedString {
     
     @discardableResult
-    func ss_attributesAtIndex(index: Int) -> Dictionary<String, Any>? {
+    func ss_attributesAtIndex(index: Int) -> Dictionary<NSAttributedString.Key, Any>? {
         guard (index < self.length || index >= 0) else { return nil }
         var calculateIndex = index
         if self.length > 0 && index == self.length { calculateIndex = calculateIndex - 1 }
@@ -21,7 +21,7 @@ extension NSAttributedString {
     }
     
     @discardableResult
-    func ss_attribute(attributeName: String, At index:Int) -> Any? {
+    func ss_attribute(attributeName: NSAttributedString.Key, At index:Int) -> Any? {
         guard index < self.length || index >= 0 else { return nil }
         var calculateIndex = index
         if self.length > 0 && index == self.length { calculateIndex = calculateIndex - 1 }
@@ -29,7 +29,7 @@ extension NSAttributedString {
     }
     
     @discardableResult
-    func ss_attributes() -> [String: Any]? {
+    func ss_attributes() -> [NSAttributedString.Key: Any]? {
         return self.ss_attributesAtIndex(index: 0)
     }
     
@@ -38,7 +38,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_font(At index: Int) -> UIFont? {
-        return ss_attribute(attributeName: NSFontAttributeName, At: index) as? UIFont
+        return ss_attribute(attributeName: .font, At: index) as? UIFont
     }
     
     var ss_Color: UIColor? {
@@ -46,7 +46,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_color(At index: Int) -> UIColor? {
-        return ss_attribute(attributeName: NSForegroundColorAttributeName, At: index) as? UIColor
+        return ss_attribute(attributeName: .foregroundColor, At: index) as? UIColor
     }
     
     var ss_BackgroundColor: UIColor? {
@@ -54,7 +54,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_backgroundColor(At index:Int) -> UIColor? {
-        return ss_attribute(attributeName: NSBackgroundColorAttributeName, At: index) as? UIColor
+        return ss_attribute(attributeName: .backgroundColor, At: index) as? UIColor
     }
     
     var ss_Kern: NSNumber? {
@@ -62,7 +62,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_kern(At index:Int) -> NSNumber? {
-        return ss_attribute(attributeName: NSKernAttributeName, At: index) as? NSNumber
+        return ss_attribute(attributeName: .kern, At: index) as? NSNumber
     }
     
     var ss_Shadow: NSShadow? {
@@ -70,7 +70,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_shadow(At index:Int) -> NSShadow? {
-        return ss_attribute(attributeName: NSShadowAttributeName, At: index) as? NSShadow
+        return ss_attribute(attributeName: .shadow, At: index) as? NSShadow
     }
     
     var ss_StrokeWidth: NSNumber? {
@@ -78,7 +78,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_strokeWidth(At index:Int) -> NSNumber? {
-        return ss_attribute(attributeName: NSStrokeWidthAttributeName, At: index) as? NSNumber
+        return ss_attribute(attributeName: .strokeWidth, At: index) as? NSNumber
     }
     
     var ss_StrokeColor: UIColor? {
@@ -86,7 +86,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_strokeColor(At index:Int) -> UIColor? {
-        return ss_attribute(attributeName: NSStrokeColorAttributeName, At: index) as? UIColor
+        return ss_attribute(attributeName: .strokeColor, At: index) as? UIColor
     }
     
     var ss_StrikenthroughStyle: NSUnderlineStyle? {
@@ -94,7 +94,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_strikenthroughStyle(At index:Int) -> NSUnderlineStyle? {
-        return ss_attribute(attributeName: NSStrikethroughStyleAttributeName, At: index) as? NSUnderlineStyle
+        return ss_attribute(attributeName: .strikethroughStyle, At: index) as? NSUnderlineStyle
     }
     
     var ss_StrikenthroughColor: UIColor? {
@@ -102,7 +102,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_strikenthroughColor(At index:Int) -> UIColor? {
-        return ss_attribute(attributeName: NSStrikethroughColorAttributeName, At: index) as? UIColor
+        return ss_attribute(attributeName: .strikethroughColor, At: index) as? UIColor
     }
     
     var ss_UnderlineStyle: NSUnderlineStyle? {
@@ -110,7 +110,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_underlineStyle(At index:Int) -> NSUnderlineStyle? {
-        return ss_attribute(attributeName: NSUnderlineStyleAttributeName, At: index) as? NSUnderlineStyle
+        return ss_attribute(attributeName: .underlineStyle, At: index) as? NSUnderlineStyle
     }
     
     var ss_UnderlineColor: UIColor? {
@@ -118,7 +118,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_underlineColor(At index:Int) -> UIColor? {
-        return ss_attribute(attributeName: NSUnderlineColorAttributeName, At: index) as? UIColor
+        return ss_attribute(attributeName: .underlineColor, At: index) as? UIColor
     }
     
     var ss_TextEffect: String? {
@@ -126,7 +126,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_textEffect(At index:Int) -> String? {
-        return ss_attribute(attributeName: NSTextEffectAttributeName, At: index) as? String
+        return ss_attribute(attributeName: .textEffect, At: index) as? String
     }
     
     var ss_Ligature: NSNumber? {
@@ -134,7 +134,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_ligature(At index:Int) -> NSNumber? {
-        return ss_attribute(attributeName: NSLigatureAttributeName, At: index) as? NSNumber
+        return ss_attribute(attributeName: .ligature, At: index) as? NSNumber
     }
     
     var ss_Obliqueness: NSNumber? {
@@ -142,7 +142,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_obliqueness(At index:Int) -> NSNumber? {
-        return ss_attribute(attributeName: NSObliquenessAttributeName, At: index) as? NSNumber
+        return ss_attribute(attributeName: .obliqueness, At: index) as? NSNumber
     }
     
     var ss_Expansion: NSNumber? {
@@ -150,7 +150,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_expansion(At index:Int) -> NSNumber? {
-        return ss_attribute(attributeName: NSExpansionAttributeName, At: index) as? NSNumber
+        return ss_attribute(attributeName: .expansion, At: index) as? NSNumber
     }
     
     var ss_BaselineOffset: NSNumber? {
@@ -158,7 +158,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_baselineOffset(At index:Int) -> NSNumber? {
-        return ss_attribute(attributeName: NSBaselineOffsetAttributeName, At: index) as? NSNumber
+        return ss_attribute(attributeName: .baselineOffset, At: index) as? NSNumber
     }
     
     var ss_VerticalGlyphFrom: Bool? {
@@ -166,7 +166,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_verticalGlyphFrom(At index:Int) -> Bool? {
-        return ss_attribute(attributeName: NSVerticalGlyphFormAttributeName, At: index) as? Bool
+        return ss_attribute(attributeName: .verticalGlyphForm, At: index) as? Bool
     }
     
     var ss_Language: String? {
@@ -174,7 +174,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_language(At index:Int) -> String? {
-        return ss_attribute(attributeName: kCTLanguageAttributeName as String, At: index) as? String
+        return ss_attribute(attributeName: NSAttributedString.Key(rawValue: kCTLanguageAttributeName as String), At: index) as? String
     }
     
     var ss_WritingDirection: [NSNumber]? {
@@ -182,7 +182,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_writingDirection(At index:Int) -> [NSNumber]? {
-        return ss_attribute(attributeName: kCTWritingDirectionAttributeName as String, At: index) as? [NSNumber]
+        return ss_attribute(attributeName: NSAttributedString.Key(kCTWritingDirectionAttributeName as String), At: index) as? [NSNumber]
     }
     
     var ss_ParagraphStyle: NSParagraphStyle? {
@@ -190,7 +190,7 @@ extension NSAttributedString {
     }
     @discardableResult
     func ss_paragraphStyle(At index:Int) -> NSParagraphStyle? {
-        return ss_attribute(attributeName: NSParagraphStyleAttributeName, At: index) as? NSParagraphStyle
+        return ss_attribute(attributeName: .paragraphStyle, At: index) as? NSParagraphStyle
     }
     
     var ss_TextAlignment: NSTextAlignment {
@@ -365,22 +365,22 @@ extension NSAttributedString {
 //MARK:NSMutableAttributedString
 extension NSMutableAttributedString {
     
-    func ss_setAttibutes(attributes: Dictionary<String, Any>) {
+    func ss_setAttibutes(attributes: Dictionary<NSAttributedString.Key, Any>) {
         self.setSs_attributes(attributes: attributes)
     }
     
-    func setSs_attributes(attributes: Dictionary<String, Any>) {
+    func setSs_attributes(attributes: Dictionary<NSAttributedString.Key, Any>) {
         self.setAttributes([:], range: NSRange.init(location: 0, length: self.length))
         for (key, value) in attributes {
             self.ss_setAttribute(name: key, value: value)
         }
     }
     
-    func ss_setAttribute(name: String, value: Any) {
+    func ss_setAttribute(name: NSAttributedString.Key, value: Any) {
         self.ss_setAttribute(name: name, value: value, range: NSRange.init(location: 0, length: self.length))
     }
     
-    func ss_setAttribute(name: String, value: Any, range: NSRange) {
+    func ss_setAttribute(name: NSAttributedString.Key, value: Any, range: NSRange) {
         self.addAttribute(name, value: value, range: range)
     }
     
@@ -401,7 +401,7 @@ extension NSMutableAttributedString {
     }
     
     func ss_setFont(value: UIFont, range: NSRange) {
-        ss_setAttribute(name: NSFontAttributeName, value: value, range: range)
+        ss_setAttribute(name: .font, value: value, range: range)
     }
     
     var ss_color: UIColor? {
@@ -412,7 +412,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setColor(value: UIColor, range: NSRange) {
-        ss_setAttribute(name: NSForegroundColorAttributeName, value: value, range: range)
+        ss_setAttribute(name: .foregroundColor, value: value, range: range)
     }
     
     var ss_backgroundColor: UIColor? {
@@ -423,7 +423,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setBackgroundColor(value: UIColor, range: NSRange) {
-        ss_setAttribute(name: NSBackgroundColorAttributeName, value: value, range: range)
+        ss_setAttribute(name: .backgroundColor, value: value, range: range)
     }
     
     var ss_kern: NSNumber? {
@@ -434,7 +434,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setKern(value: NSNumber, range: NSRange) {
-        ss_setAttribute(name: NSKernAttributeName, value: value, range: range)
+        ss_setAttribute(name: .kern, value: value, range: range)
     }
     
     var ss_shadow: NSShadow? {
@@ -445,7 +445,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setShadow(value: NSShadow, range: NSRange) {
-        ss_setAttribute(name: NSShadowAttributeName, value: value, range: range)
+        ss_setAttribute(name: .shadow, value: value, range: range)
     }
     
     var ss_strokeWidth: NSNumber? {
@@ -456,7 +456,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setStrokeWidth(value: NSNumber, range: NSRange) {
-        ss_setAttribute(name: NSStrokeWidthAttributeName, value: value, range: range)
+        ss_setAttribute(name: .strokeWidth, value: value, range: range)
     }
     
     var ss_strokeColor: UIColor? {
@@ -467,7 +467,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setStrokeColor(value: UIColor, range: NSRange) {
-        ss_setAttribute(name: NSStrokeColorAttributeName, value: value, range: range)
+        ss_setAttribute(name: .strokeColor, value: value, range: range)
     }
     
     
@@ -479,7 +479,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setStrikenthroughStyle(value: NSUnderlineStyle, range: NSRange) {
-        ss_setAttribute(name: NSStrikethroughStyleAttributeName, value: value, range: range)
+        ss_setAttribute(name: .strikethroughStyle, value: value, range: range)
     }
     
     var ss_strikenthroughColor: UIColor? {
@@ -490,7 +490,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setStrikenthroughColor(value: UIColor, range: NSRange) {
-        ss_setAttribute(name: NSStrikethroughColorAttributeName, value: value, range: range)
+        ss_setAttribute(name: .strikethroughColor, value: value, range: range)
     }
     
     var ss_underlineStyle: NSUnderlineStyle? {
@@ -501,7 +501,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setUnderlinestyle(value: NSUnderlineStyle, range: NSRange) {
-        ss_setAttribute(name: NSUnderlineStyleAttributeName, value: value, range: range)
+        ss_setAttribute(name: .underlineStyle, value: value, range: range)
     }
     
     var ss_underlineColor: UIColor? {
@@ -512,7 +512,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setUnderlineColor(value: UIColor, range: NSRange) {
-        ss_setAttribute(name: NSUnderlineColorAttributeName, value: value, range: range)
+        ss_setAttribute(name: .underlineColor, value: value, range: range)
     }
     
     var ss_textEffect: String? {
@@ -523,7 +523,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setTextEffect(value: String, range: NSRange) {
-        ss_setAttribute(name: NSTextEffectAttributeName, value: value, range: range)
+        ss_setAttribute(name: .textEffect, value: value, range: range)
     }
     
     var ss_ligature: NSNumber? {
@@ -534,7 +534,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setTextLigature(value: NSNumber, range: NSRange) {
-        ss_setAttribute(name: NSLigatureAttributeName, value: value, range: range)
+        ss_setAttribute(name: .ligature, value: value, range: range)
     }
     
     var ss_obliqueness: NSNumber? {
@@ -545,7 +545,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setObliqueness(value: NSNumber, range: NSRange) {
-        ss_setAttribute(name: NSObliquenessAttributeName, value: value, range: range)
+        ss_setAttribute(name: .obliqueness, value: value, range: range)
     }
     
     var ss_expansion: NSNumber? {
@@ -556,7 +556,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setExpansion(value: NSNumber, range: NSRange) {
-        ss_setAttribute(name: NSExpansionAttributeName, value: value, range: range)
+        ss_setAttribute(name: .expansion, value: value, range: range)
     }
 
     var ss_baselineOffset: NSNumber? {
@@ -567,7 +567,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setBaselineOffset(value: NSNumber, range: NSRange) {
-        ss_setAttribute(name: NSBaselineOffsetAttributeName, value: value, range: range)
+        ss_setAttribute(name: .baselineOffset, value: value, range: range)
     }
     
     var ss_verticalGlyphFrom: Bool? {
@@ -578,7 +578,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setVerticalGlyphFrom(value: Bool, range: NSRange) {
-        ss_setAttribute(name: NSBaselineOffsetAttributeName, value: value, range: range)
+        ss_setAttribute(name: .verticalGlyphForm, value: value, range: range)
     }
     
     var ss_language: String? {
@@ -589,7 +589,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setLanguage(value: String, range: NSRange) {
-        ss_setAttribute(name: kCTLanguageAttributeName as String, value: value, range: range)
+        ss_setAttribute(name: NSAttributedString.Key(rawValue: kCTLanguageAttributeName as String), value: value, range: range)
     }
     
     var ss_writingDirection: [NSNumber]? {
@@ -600,7 +600,7 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setWritingDirection(value: [NSNumber], range: NSRange) {
-        ss_setAttribute(name: kCTWritingDirectionAttributeName as String, value: value, range: range)
+        ss_setAttribute(name: NSAttributedString.Key(kCTWritingDirectionAttributeName as String), value: value, range: range)
     }
     
     var ss_paragraphStyle: NSParagraphStyle? {
@@ -611,12 +611,12 @@ extension NSMutableAttributedString {
         }
     }
     func ss_setParagraphStyle(value: NSParagraphStyle, range: NSRange) {
-        ss_setAttribute(name: NSParagraphStyleAttributeName, value: value, range: range)
+        ss_setAttribute(name: .paragraphStyle, value: value, range: range)
     }
     
     
     private func ss_paragraphStyleSet(range: NSRange, block:(_ mutableParagraphStyle: NSMutableParagraphStyle) -> NSMutableParagraphStyle) {
-        self.enumerateAttribute(NSParagraphStyleAttributeName, in: range, options: [.longestEffectiveRangeNotRequired]) { (subStyle, subRange, stop) in
+        self.enumerateAttribute(.paragraphStyle, in: range, options: [.longestEffectiveRangeNotRequired]) { (subStyle, subRange, stop) in
             var mutableParagraphStyle: NSMutableParagraphStyle
             if let paragraphStyle = subStyle as? NSParagraphStyle {
                 mutableParagraphStyle = (paragraphStyle.mutableCopy() as? NSMutableParagraphStyle)!
@@ -626,7 +626,7 @@ extension NSMutableAttributedString {
                 mutableParagraphStyle = NSMutableParagraphStyle()
             }
             mutableParagraphStyle = block(mutableParagraphStyle)
-            ss_setAttribute(name: NSParagraphStyleAttributeName, value: mutableParagraphStyle, range: range)
+            ss_setAttribute(name: .paragraphStyle, value: mutableParagraphStyle, range: range)
         }
     }
     

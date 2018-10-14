@@ -31,7 +31,9 @@ a common tools of swift
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'SSKitSwift/**/*'
-  
+
+  s.swift_version = '3.2'
+
   # s.resource_bundles = {
   #   'SSKitSwift' => ['SSKitSwift/Assets/*.png']
   # }

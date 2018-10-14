@@ -41,11 +41,11 @@
 		607FACE51AFB9204008FA782 /* SSKitSwift_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSKitSwift_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		6B5CD129B0B12107C5904A16 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		7FBB70EA66434CC4A7D35AF9 /* SSKitSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SSKitSwift.podspec; path = ../SSKitSwift.podspec; sourceTree = "<group>"; };
+		6B5CD129B0B12107C5904A16 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		7FBB70EA66434CC4A7D35AF9 /* SSKitSwift.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SSKitSwift.podspec; path = ../SSKitSwift.podspec; sourceTree = "<group>"; };
 		B26F1A6C0D3CC5C554E0558D /* Pods-SSKitSwift_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSKitSwift_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SSKitSwift_Example/Pods-SSKitSwift_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D2D10FEFCC85B49EE256F3CF /* Pods-SSKitSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSKitSwift_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SSKitSwift_Example/Pods-SSKitSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		EAF18371225B4DB56F0ACB73 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		EAF18371225B4DB56F0ACB73 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		F7448EEA93B5996DC4B98DE0 /* Pods_SSKitSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSKitSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -510,7 +510,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -524,7 +524,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

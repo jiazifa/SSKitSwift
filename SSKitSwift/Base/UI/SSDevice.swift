@@ -120,8 +120,8 @@ import AssetsLibrary
 public extension UIImagePickerController {
     ///能否打开摄像头
     public var canOpenCamera: Bool {
-        let mediaType: String = AVMediaTypeVideo
-        let authStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: mediaType)
+        let mediaType: AVMediaType = AVMediaType.video
+        let authStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: mediaType)
         if (authStatus==AVAuthorizationStatus.restricted || authStatus==AVAuthorizationStatus.denied) {
             return false
         }

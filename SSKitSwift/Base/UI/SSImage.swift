@@ -31,11 +31,11 @@ public extension UIImage {
         var data:Data
         var imgString:String = ""
         if (limit >= 1) {
-            data = (UIImagePNGRepresentation(self)?.base64EncodedData(options: Data.Base64EncodingOptions.lineLength64Characters))!
+            data = (self.pngData()?.base64EncodedData(options: Data.Base64EncodingOptions.lineLength64Characters))!
         }else if (limit <= 0) {
-            data = UIImageJPEGRepresentation(self, 0.1)!
+            data = self.jpegData(compressionQuality: 0.1) ?? Data.init()
         }else {
-            data = UIImageJPEGRepresentation(self, limit)!
+            data = self.jpegData(compressionQuality: limit) ?? Data.init()
         }
         imgString = data.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
         return imgString

@@ -119,16 +119,16 @@ public extension String {
         let string: NSString = self as NSString
         var result:CGSize = CGSize.zero
         if (string.responds(to: #selector(NSString.boundingRect(with:options:attributes:context:)))) {
-            var attr:[String: Any] = [NSFontAttributeName : font!]
+            var attr:[NSAttributedString.Key: Any] = [.font : font!]
             if (mode != NSLineBreakMode.byWordWrapping) {
                 let paragraphStyle = NSMutableParagraphStyle.init()
                 paragraphStyle.lineBreakMode = mode
-                attr[NSParagraphStyleAttributeName] = paragraphStyle
+                attr[.paragraphStyle] = paragraphStyle
             }
             let rect: CGRect = string.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attr , context: nil)
             result = rect.size
         }else {
-            result = string.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font!], context: nil).size
+            result = string.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: font!], context: nil).size
         }
         
         return result

@@ -27,7 +27,7 @@ public extension UIView {
         let xPosition = CGPoint(x: position.x+offsetX, y: position.y+offsetY)
         let yPosition = CGPoint(x: position.x-offsetX, y: position.y-offsetY)
         let animation = CABasicAnimation(keyPath: key_position)
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
         animation.fromValue = NSValue.init(cgPoint: xPosition)
         animation.toValue = NSValue.init(cgPoint: yPosition)
         animation.autoreverses = true
@@ -45,7 +45,7 @@ public extension UIView {
         let animation = CABasicAnimation(keyPath: key_bounds)
         animation.duration = duration!
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = CAMediaTimingFillMode.forwards
         animation.toValue = NSValue.init(cgRect: CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width*by, height: self.frame.size.height*by))
         self.layer.add(animation, forKey: nil)
     }
@@ -58,7 +58,7 @@ public extension UIView {
         let animation = CABasicAnimation(keyPath: key_transform)
         animation.duration = duration!
         animation.isRemovedOnCompletion = false
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = CAMediaTimingFillMode.forwards
         animation.toValue = NSValue.init(caTransform3D: CATransform3DMakeRotation(CGFloat(Double.pi)*rotate, 0.0, 0.0, 1.0))
         self.layer.add(animation, forKey: nil)
     }

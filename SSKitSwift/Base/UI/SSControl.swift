@@ -12,15 +12,15 @@ private var block_key = 0
 
 class _SSUIControlBlockTarget: NSObject {
     let block : (_ sender:AnyObject) ->()
-    let events : UIControlEvents
+    let events : UIControl.Event
     //这个关键字用来标记闭包的
-    init(block:@escaping (_ sender : AnyObject)->(), events:UIControlEvents) {
+    init(block:@escaping (_ sender : AnyObject)->(), events:UIControl.Event) {
         self.block = block
         self.events = events
         super.init()
     }
     
-    func invokeMethod(sender:AnyObject) {
+    @objc func invokeMethod(sender:AnyObject) {
         block(sender);
     }
 }
@@ -40,23 +40,23 @@ public extension UIControl {
     /// 移除所有事件
     private func removeAllTargets() {
         for object in self.allTargets {
-            self.removeTarget(object, action: nil, for: UIControlEvents.allEvents)
+            self.removeTarget(object, action: nil, for: UIControl.Event.allEvents)
         }
         self.targets.removeAllObjects()
     }
     /// 添加控件对事件的响应，避免代码分离
-    public func addBlock(controlEvents : UIControlEvents, block:@escaping (_ sender:AnyObject)->()) {
+    public func addBlock(controlEvents : UIControl.Event, block:@escaping (_ sender:AnyObject)->()) {
         let target : _SSUIControlBlockTarget = _SSUIControlBlockTarget.init(block: block, events: controlEvents)
         self.addTarget(target, action: #selector(target.invokeMethod(sender:)), for: controlEvents)
         //若果没有这两句，那么会没有响应
         let targets : NSMutableArray = self.targets
         targets.add(target)
     }
-    public func setBlock(controlEvents:UIControlEvents, block:@escaping (_ sender:AnyObject) ->()) {
+    public func setBlock(controlEvents:UIControl.Event, block:@escaping (_ sender:AnyObject) ->()) {
         self.removeAllBlocksForControlEvents(events: controlEvents)
         self.addBlock(controlEvents: controlEvents, block: block)
     }
-    public func removeAllBlocksForControlEvents(events:UIControlEvents) {
+    public func removeAllBlocksForControlEvents(events:UIControl.Event) {
         let removes:NSMutableArray = NSMutableArray.init(capacity: 0)
         for target in self.targets {
             if (target as! _SSUIControlBlockTarget).events == events {

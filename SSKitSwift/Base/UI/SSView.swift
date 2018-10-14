@@ -202,7 +202,7 @@ public extension UIView {
         let xPosition:CGPoint = CGPoint.init(x: position.x+size.width, y: position.y+size.height)
         let yPosition:CGPoint = CGPoint.init(x: position.x-size.width, y: position.y-size.height)
         let animate:CABasicAnimation = CABasicAnimation.init(keyPath: "position")
-        animate.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionDefault)
+        animate.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.default)
         animate.fromValue = NSValue.init(cgPoint: xPosition)
         animate.toValue = NSValue.init(cgPoint: yPosition)
         animate.autoreverses = true
