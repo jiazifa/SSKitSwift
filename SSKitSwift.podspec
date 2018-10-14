@@ -32,7 +32,7 @@ a common tools of swift
 
   s.source_files = 'SSKitSwift/**/*'
 
-  s.swift_version = '4.0'
+  s.swift_version = '4.2'
 
   # s.resource_bundles = {
   #   'SSKitSwift' => ['SSKitSwift/Assets/*.png']
